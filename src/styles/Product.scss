@@ -1,0 +1,13 @@
+.product-item {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  
+  &--name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 30px;
+    -webkit-line-clamp: 2;
+    height: 60px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+}

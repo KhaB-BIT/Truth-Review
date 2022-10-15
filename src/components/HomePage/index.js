@@ -1,12 +1,12 @@
-import { Text } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
+import Header from "./Header";
+import ListProducts from "./ListProducts";
 
 function Homepage() {
-  return (
-    <>
-      <Text>Home page</Text>
-      <Text>Header....</Text>
-    </>
-  );
+  return <Container maxW="container.xl">
+    <Header />
+    <ListProducts/>
+  </Container>;
 }
 
 export default Homepage;
