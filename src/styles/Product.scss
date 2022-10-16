@@ -1,6 +1,20 @@
 .product-item {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  overflow: hidden;
+
+  img {
+    transition: all 0.4s ease-out;
+    transform: scale(1);
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.1);
+    }
+  }
+
   
+
   &--name {
     overflow: hidden;
     text-overflow: ellipsis;

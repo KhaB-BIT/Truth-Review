@@ -5,34 +5,49 @@ import {
   Container,
   Flex,
   Icon,
-  Img,
   Spacer,
   Text,
   chakra,
   Divider,
 } from "@chakra-ui/react";
 import { FaShoppingBag, FaCheckCircle, FaShippingFast } from "react-icons/fa";
-import datainfo from "./datainfo";
+//import datainfo from "./datainfo";
 import ImageSlice from "./ImageSlice";
 import parse from "html-react-parser";
 import Comment from "./Comment";
-import '../../styles/InfoPage.scss';
+import "../../styles/InfoPage.scss";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-function InfoPage() {
+function InfoPage({urlKey}) {
+  const [product, setProduct] = useState();
+  urlKey = urlKey.substring('https://www.sendo.vn/'.length, urlKey.indexOf('.html'))
+
+  useEffect(() => {
+    axios
+      .get(
+        `full/${urlKey}?`
+      )
+      .then((res) => {
+        const data = res.data;
+        setProduct(data)
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <Container maxW="container.xl">
       <Flex bg="white" borderRadius="20px">
-        <ImageSlice images={datainfo.data.media}/>
+        <ImageSlice images={product?.data.media} />
         <Box flex={1} p={6} borderRadius="20px">
           <Text fontSize="xl" fontWeight="bold">
-            {datainfo.data.name}
+            {product?.data.name}
           </Text>
           <Text fontSize="xl" color="red" fontWeight="bold" my={2}>
-            {datainfo.data.final_price}
+            {product?.data.final_price}
           </Text>
           <Text my={2}>
             <chakra.span textDecoration="line-through">
-              {datainfo.data.price_max}
+              {product?.data.price_max}
             </chakra.span>{" "}
             <chakra.span color="red" ml={1}>
               Giảm 48%
@@ -47,7 +62,7 @@ function InfoPage() {
                 <Icon as={StarIcon} mr={1} color="orange" />
                 <Icon as={StarIcon} mr={1} color="orange" />
                 <Text ml={1} h="18px">
-                  {datainfo.data.rating_info.total_rated} đánh giá
+                  {product?.data.rating_info.total_rated} đánh giá
                 </Text>
               </Center>
             </Flex>
@@ -56,7 +71,7 @@ function InfoPage() {
               <Center>
                 <Icon as={FaShoppingBag} />
                 <Text ml={2} h="18px">
-                  {datainfo.data.order_count} lượt mua
+                  {product?.data.order_count} lượt mua
                 </Text>
               </Center>
             </Flex>
@@ -82,13 +97,15 @@ function InfoPage() {
 
       <Flex>
         <Box bg="white" w="600px" borderRadius="20px" mt={8}>
-        <Text pt={6} pl={6} fontSize='xl'>Chi tiết sản phẩm</Text>
-        <Divider my={3}/>
+          <Text pt={6} pl={6} fontSize="xl">
+            Chi tiết sản phẩm
+          </Text>
+          <Divider my={3} />
           <Box className="detail-product">
-            {parse(datainfo.data.description_info.description)}
+            {product? parse(product?.data.description_info.description) : ''}
           </Box>
         </Box>
-        <Comment/>
+        <Comment />
       </Flex>
     </Container>
   );

@@ -15,7 +15,7 @@ function ImageSlice({ images }) {
         navigation
         pagination={{ clickable: true }}
       >
-        {images.map((item, index) => {
+        {images?.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               <Img src={item.image_500x500} m='auto'/>

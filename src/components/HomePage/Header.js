@@ -31,10 +31,10 @@ function Header() {
             >
               <Button
                 rightIcon={<ArrowForwardIcon />}
-                bg="linear-gradient(to right, #2c479e, #1edaeb)"
                 color="white"
                 size="md"
                 onClick={redirectToSendo}
+                bg="linear-gradient(to right, #2c479e, #1edaeb)"
                 _hover={{ bg: 'linear-gradient(to right, #2c479e, #1edaeb)' }}
               >
                 sendo.vn
