@@ -11,29 +11,34 @@ import {
   chakra,
   Divider,
 } from "@chakra-ui/react";
-import { FaShoppingBag, FaCheckCircle, FaShippingFast} from "react-icons/fa";
+import { FaShoppingBag, FaCheckCircle, FaShippingFast } from "react-icons/fa";
+import datainfo from "./datainfo";
+import ImageSlice from "./ImageSlice";
+import parse from "html-react-parser";
+import Comment from "./Comment";
+import '../../styles/InfoPage.scss';
 
 function InfoPage() {
   return (
     <Container maxW="container.xl">
-      <Flex>
-        <Box w={"600px"} bgColor='white' borderRadius='20px' marginRight='30px'>
-          <Img src="https://media3.scdn.vn/img4/2022/08_15/EOAb2r7Ie3itb4NCr7Lp_simg_ab1f47_350x350_maxb.jpg" />
-        </Box>
-
-        <Box bgColor='white' p={6} borderRadius='20px' flex={1}>
+      <Flex bg="white" borderRadius="20px">
+        <ImageSlice images={datainfo.data.media}/>
+        <Box flex={1} p={6} borderRadius="20px">
           <Text fontSize="xl" fontWeight="bold">
-            Chuột Quang không dây 2.4GHz ROBOT M220 Khoảng cách tín hiệu 20m
-            công nghệ cảm biến quang học 1600DPI - M220
+            {datainfo.data.name}
           </Text>
           <Text fontSize="xl" color="red" fontWeight="bold" my={2}>
-            99.000đ
+            {datainfo.data.final_price}
           </Text>
           <Text my={2}>
-            <chakra.span textDecoration="line-through">190.000đ</chakra.span>{" "}
-            <chakra.span color="red" ml={1}>Giảm 48%</chakra.span>
+            <chakra.span textDecoration="line-through">
+              {datainfo.data.price_max}
+            </chakra.span>{" "}
+            <chakra.span color="red" ml={1}>
+              Giảm 48%
+            </chakra.span>
           </Text>
-          <Flex w='230px' my={4}>
+          <Flex w="400px" my={4}>
             <Flex>
               <Center>
                 <Icon as={StarIcon} mr={1} color="orange" />
@@ -42,7 +47,7 @@ function InfoPage() {
                 <Icon as={StarIcon} mr={1} color="orange" />
                 <Icon as={StarIcon} mr={1} color="orange" />
                 <Text ml={1} h="18px">
-                  22
+                  {datainfo.data.rating_info.total_rated} đánh giá
                 </Text>
               </Center>
             </Flex>
@@ -51,19 +56,39 @@ function InfoPage() {
               <Center>
                 <Icon as={FaShoppingBag} />
                 <Text ml={2} h="18px">
-                  120
+                  {datainfo.data.order_count} lượt mua
                 </Text>
-              </Center> 
+              </Center>
             </Flex>
           </Flex>
           <Divider />
-          <Text fontSize='lg' mb={2} mt={1}>Quyền lợi khách hàng </Text>
-          <Flex justifyContent='space-evenly'>
-            <Flex alignItems='center'><Icon color='green' as={FaCheckCircle} mr={2}/> Miễn phí hoàn trả</Flex>
-            <Flex alignItems='center'><Icon color='green' as={FaCheckCircle} mr={2}/> 7 ngày hoàn trả</Flex>
-            <Flex alignItems='center'><Icon color='blue' as={FaShippingFast} mr={2}/> Miễn phí vận chuyển</Flex>
+          <Text fontSize="lg" mb={2} mt={1}>
+            Quyền lợi khách hàng{" "}
+          </Text>
+          <Flex justifyContent="space-evenly">
+            <Flex alignItems="center">
+              <Icon color="green" as={FaCheckCircle} mr={2} /> Miễn phí hoàn trả
+            </Flex>
+            <Flex alignItems="center">
+              <Icon color="green" as={FaCheckCircle} mr={2} /> 7 ngày hoàn trả
+            </Flex>
+            <Flex alignItems="center">
+              <Icon color="blue" as={FaShippingFast} mr={2} /> Miễn phí vận
+              chuyển
+            </Flex>
           </Flex>
         </Box>
+      </Flex>
+
+      <Flex>
+        <Box bg="white" w="600px" borderRadius="20px" mt={8}>
+        <Text pt={6} pl={6} fontSize='xl'>Chi tiết sản phẩm</Text>
+        <Divider my={3}/>
+          <Box className="detail-product">
+            {parse(datainfo.data.description_info.description)}
+          </Box>
+        </Box>
+        <Comment/>
       </Flex>
     </Container>
   );
