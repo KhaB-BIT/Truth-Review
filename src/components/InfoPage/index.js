@@ -1,16 +1,13 @@
-import { StarIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Center,
   Container,
   Flex,
-  Icon,
   Spacer,
   Text,
   chakra,
   Divider,
+  Image,
 } from "@chakra-ui/react";
-import { FaShoppingBag, FaCheckCircle, FaShippingFast } from "react-icons/fa";
 //import datainfo from "./datainfo";
 import ImageSlice from "./ImageSlice";
 import parse from "html-react-parser";
@@ -19,23 +16,25 @@ import "../../styles/InfoPage.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function InfoPage({urlKey}) {
+function InfoPage({ urlKey }) {
   const [product, setProduct] = useState();
-  urlKey = urlKey.substring('https://www.sendo.vn/'.length, urlKey.indexOf('.html'))
+  urlKey = urlKey.substring(
+    "https://www.sendo.vn/".length,
+    urlKey.indexOf(".html")
+  );
 
   useEffect(() => {
     axios
-      .get(
-        `full/${urlKey}?`
-      )
+      .get(`full/${urlKey}?`)
       .then((res) => {
         const data = res.data;
-        setProduct(data)
+        setProduct(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [urlKey]);
   return (
     <Container maxW="container.xl">
+
       <Flex bg="white" borderRadius="20px">
         <ImageSlice images={product?.data.media} />
         <Box flex={1} p={6} borderRadius="20px">
@@ -43,70 +42,81 @@ function InfoPage({urlKey}) {
             {product?.data.name}
           </Text>
           <Text fontSize="xl" color="red" fontWeight="bold" my={2}>
-            {product?.data.final_price}
+            {product?.data.final_price.toLocaleString("vi-VN", {
+              style: "currency",
+              currency: "VND",
+            })}
           </Text>
           <Text my={2}>
             <chakra.span textDecoration="line-through">
-              {product?.data.price_max}
+              {product?.data.price_max.toLocaleString("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              })}
             </chakra.span>{" "}
             <chakra.span color="red" ml={1}>
-              Giảm 48%
+              Giảm 480%
             </chakra.span>
           </Text>
           <Flex w="400px" my={4}>
-            <Flex>
-              <Center>
-                <Icon as={StarIcon} mr={1} color="orange" />
-                <Icon as={StarIcon} mr={1} color="orange" />
-                <Icon as={StarIcon} mr={1} color="orange" />
-                <Icon as={StarIcon} mr={1} color="orange" />
-                <Icon as={StarIcon} mr={1} color="orange" />
-                <Text ml={1} h="18px">
-                  {product?.data.rating_info.total_rated} đánh giá
-                </Text>
-              </Center>
-            </Flex>
+            <Text fontSize="sm">
+              ⭐⭐⭐⭐⭐ {product?.data.rating_info.total_rated} đánh giá
+            </Text>
             <Spacer />
-            <Flex>
-              <Center>
-                <Icon as={FaShoppingBag} />
-                <Text ml={2} h="18px">
-                  {product?.data.order_count} lượt mua
-                </Text>
-              </Center>
-            </Flex>
+            <Text fontSize="sm">️🧺 {product?.data.order_count} lượt mua</Text>
           </Flex>
-          <Divider />
-          <Text fontSize="lg" mb={2} mt={1}>
-            Quyền lợi khách hàng{" "}
+          <Divider my={1} />
+
+          <Text fontSize="md" mb={2} mt={1}>
+            Màu sắc
+          </Text>
+          <Flex>
+            {product?.data.attribute[0].value.map((item) => {
+              return (
+                <Image
+                  boxSize="100px"
+                  borderRadius='5px'
+                  src={item.image_500x500}
+                  mr={2}
+                  boxShadow='rgba(149, 157, 165, 0.2) 0px 8px 24px;'
+                />
+              );
+            })}
+          </Flex>
+
+          <Text fontSize="md" my={2}>
+            Ưu đãi dành cho bạn
           </Text>
           <Flex justifyContent="space-evenly">
-            <Flex alignItems="center">
-              <Icon color="green" as={FaCheckCircle} mr={2} /> Miễn phí hoàn trả
-            </Flex>
-            <Flex alignItems="center">
-              <Icon color="green" as={FaCheckCircle} mr={2} /> 7 ngày hoàn trả
-            </Flex>
-            <Flex alignItems="center">
-              <Icon color="blue" as={FaShippingFast} mr={2} /> Miễn phí vận
-              chuyển
-            </Flex>
+            <Text fontSize="sm">🛵 Miễn phí vận chuyển</Text>
+            <Text fontSize="sm">💵 Trả góp Kredivo</Text>
+          </Flex>
+
+          <Divider my={1} />
+          <Text fontSize="md" my={2}>
+            Quyền lợi khách hàng
+          </Text>
+          <Flex justifyContent="space-evenly">
+            {product?.data.return_policy.map((item, index) => {
+              return <Text fontSize="sm">✅ {item.title}</Text>;
+            })}
           </Flex>
         </Box>
       </Flex>
 
-      <Flex>
-        <Box bg="white" w="600px" borderRadius="20px" mt={8}>
+      <Flex mt={5}>
+        <Box bg="white" w="600px" borderRadius="20px">
           <Text pt={6} pl={6} fontSize="xl">
             Chi tiết sản phẩm
           </Text>
           <Divider my={3} />
           <Box className="detail-product">
-            {product? parse(product?.data.description_info.description) : ''}
+            {product ? parse(product?.data.description_info.description) : ""}
           </Box>
         </Box>
         <Comment />
       </Flex>
+
     </Container>
   );
 }

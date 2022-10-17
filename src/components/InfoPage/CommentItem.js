@@ -29,11 +29,11 @@ function CommentIten({ data }) {
           <Flex>
             <Box ml={3}>
               <Text>{data.user_name}</Text>
-              <Box>⭐⭐⭐⭐⭐</Box>
+              <Text fontSize='sm'>⭐⭐⭐⭐⭐</Text>
             </Box>
           </Flex>
 
-          <Text p={3}>{data.comment}</Text>
+          <Text p={3} fontSize='sm'>{data.comment}</Text>
           <Flex overflowX='scroll' pb={1}>
             {data.images.map((item, index) => {
               return (
