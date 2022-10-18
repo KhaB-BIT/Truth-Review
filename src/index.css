@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f0f2f5 !important;
+  user-select: none;
 }
 
 code {
@@ -15,6 +16,7 @@ code {
 
 /* width */
 ::-webkit-scrollbar {
+  cursor: pointer;
   width: 10px;
   height: 7px;
 }
