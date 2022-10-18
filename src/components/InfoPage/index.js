@@ -8,15 +8,14 @@ import {
   Divider,
   Image,
 } from "@chakra-ui/react";
-//import datainfo from "./datainfo";
+import { useEffect, useState } from "react";
 import ImageSlice from "./ImageSlice";
 import parse from "html-react-parser";
 import Comment from "./Comment";
 import "../../styles/InfoPage.scss";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
-function InfoPage({ urlKey }) {
+function InfoPage({ urlKey, productId }) {
   const [product, setProduct] = useState();
   urlKey = urlKey.substring(
     "https://www.sendo.vn/".length,
@@ -25,17 +24,22 @@ function InfoPage({ urlKey }) {
 
   useEffect(() => {
     axios
-      .get(`full/${urlKey}?`)
+      .get(`https://detail-api.sendo.vn/full/${urlKey}?`)
       .then((res) => {
-        const data = res.data;
-        setProduct(data);
+        setProduct(res.data);
       })
-      .catch((error) => console.log(error));
-  }, [urlKey]);
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <Container maxW="container.xl">
-
-      <Flex bg="white" borderRadius="20px">
+      <Flex
+        bg="white"
+        borderRadius="20px"
+        boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;"
+      >
         <ImageSlice images={product?.data.media} />
         <Box flex={1} p={6} borderRadius="20px">
           <Text fontSize="xl" fontWeight="bold">
@@ -55,7 +59,12 @@ function InfoPage({ urlKey }) {
               })}
             </chakra.span>{" "}
             <chakra.span color="red" ml={1}>
-              Giảm 480%
+              Giảm{" "}
+              {100 -
+                Math.floor(
+                  (product?.data.final_price * 100) / product?.data.price_max
+                )}
+              %
             </chakra.span>
           </Text>
           <Flex w="400px" my={4}>
@@ -70,19 +79,22 @@ function InfoPage({ urlKey }) {
           <Text fontSize="md" mb={2} mt={1}>
             Màu sắc
           </Text>
-          <Flex>
-            {product?.data.attribute[0].value.map((item) => {
-              return (
-                <Image
-                  boxSize="100px"
-                  borderRadius='5px'
-                  src={item.image_500x500}
-                  mr={2}
-                  boxShadow='rgba(149, 157, 165, 0.2) 0px 8px 24px;'
-                />
-              );
-            })}
-          </Flex>
+          {product?.data.attribute && (
+            <Flex>
+              {product?.data.attribute[0]?.value.map((item, index) => {
+                return (
+                  <Image
+                    key={index}
+                    boxSize="100px"
+                    borderRadius="5px"
+                    src={item.image_500x500}
+                    mr={2}
+                    boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+                  />
+                );
+              })}
+            </Flex>
+          )}
 
           <Text fontSize="md" my={2}>
             Ưu đãi dành cho bạn
@@ -98,25 +110,33 @@ function InfoPage({ urlKey }) {
           </Text>
           <Flex justifyContent="space-evenly">
             {product?.data.return_policy.map((item, index) => {
-              return <Text fontSize="sm">✅ {item.title}</Text>;
+              return (
+                <Text fontSize="sm" key={index}>
+                  ✅ {item.title}
+                </Text>
+              );
             })}
           </Flex>
         </Box>
       </Flex>
 
       <Flex mt={5}>
-        <Box bg="white" w="600px" borderRadius="20px">
+        <Box
+          bg="white"
+          w="600px"
+          borderRadius="20px"
+          boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;"
+        >
           <Text pt={6} pl={6} fontSize="xl">
-            Chi tiết sản phẩm
+            Chi tiết & hình ảnh sản phẩm
           </Text>
           <Divider my={3} />
           <Box className="detail-product">
             {product ? parse(product?.data.description_info.description) : ""}
           </Box>
         </Box>
-        <Comment />
+        <Comment productId={productId} />
       </Flex>
-
     </Container>
   );
 }

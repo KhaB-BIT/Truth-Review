@@ -29,22 +29,25 @@ function CommentIten({ data }) {
           <Flex>
             <Box ml={3}>
               <Text>{data.user_name}</Text>
-              <Text fontSize='sm'>⭐⭐⭐⭐⭐</Text>
+              <Text fontSize="sm">⭐⭐⭐⭐⭐</Text>
             </Box>
           </Flex>
 
-          <Text p={3} fontSize='sm'>{data.comment}</Text>
-          <Flex overflowX='scroll' pb={1}>
+          <Text p={3} fontSize="sm">
+            {data.comment}
+          </Text>
+          <Flex overflowX="scroll" pb={1}>
             {data.images.map((item, index) => {
               return (
                 <Image
+                  ml={3}
                   key={index}
+                  src={item}
                   boxSize="100px"
                   objectFit="cover"
-                  borderRadius='5px'
-                  cursor='pointer'
-                  src={item}
-                  ml={3}
+                  borderRadius="5px"
+                  cursor="pointer"
+                  _hover={{ opacity: 0.8 }}
                   onClick={() => handleOpenModal(item)}
                 />
               );

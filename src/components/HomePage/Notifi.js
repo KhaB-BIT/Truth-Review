@@ -13,7 +13,7 @@ function Notifi() {
     <Box display="flex" justifyContent="flex-end">
       <Alert status="info" w="fit-content" mt={3} borderRadius='5px'>
         <Box>
-          <AlertDescription>Ở đây, chúng tôi review mọi thứ bạn cần</AlertDescription>
+          <AlertDescription pr={6}>Ở đây, chúng tôi review mọi thứ bạn cần</AlertDescription>
         </Box>
         <CloseButton
           position="relative"

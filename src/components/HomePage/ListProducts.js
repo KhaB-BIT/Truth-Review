@@ -13,7 +13,8 @@ import Product from "./Product";
 import data, { category } from "./data";
 import InfoPage from "../InfoPage";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 // import axios from "axios";
 // import { useEffect, useState } from "react";
 
@@ -22,26 +23,29 @@ function ListProducts() {
     window.open(link);
   };
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [url, setUrl] = useState()
+  const [key, setKey] = useState({ url: "", product_id: "" });
 
-  const handleOpenModal = (value) => {
-    setUrl(value)
-    onOpen()
-  }
+  const handleOpenModal = (url, product_id) => {
+    setKey({ url, product_id });
+    onOpen();
+  };
 
-  //https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=1&platform=1&seller_admin_id=717078&sortType=vasup_desc
-  // const [products, setProducts] = useState();
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       "/product/filter?limit=30&page=1&platform=1&seller_admin_id=717078&sortType=vasup_desc"
-  //     )
-  //     .then((res) => {
-  //       const data = res.data;
-  //       setProducts(data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=1&platform=1&seller_admin_id=717078&sortType=vasup_desc`
+      )
+      .then((res) => {
+        setProducts(res.data.data.list)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  
 
   return (
     <>
@@ -51,9 +55,13 @@ function ListProducts() {
 
       <Flex>
         <Grid templateColumns="repeat(3, 1fr)" gap={8} w="950px">
-          {data?.data.list.map((item, index) => {
+          {products?.map((item, index) => {
             return (
-              <GridItem w="100%" key={index} onClick={() => handleOpenModal(item.url_key)}>
+              <GridItem
+                w="100%"
+                key={index}
+                onClick={() => handleOpenModal(item.url_key, item.product_id)}
+              >
                 <Product value={item} />
               </GridItem>
             );
@@ -93,12 +101,12 @@ function ListProducts() {
             w="50px"
             h="50px"
             margin={8}
-            color='white'
+            color="white"
             bg="linear-gradient(to right, #2c479e, #1edaeb)"
-            _hover={{ opacity: '0.8' }}
+            _hover={{ opacity: "0.8", transform: 'scale(1.05)' }}
             borderRadius="50%"
             cursor="pointer"
-            position='fixed'
+            position="fixed"
           >
             <Icon
               as={ArrowBackIcon}
@@ -108,7 +116,7 @@ function ListProducts() {
             />
           </Flex>
           <ModalBody>
-            <InfoPage urlKey={url} />
+            <InfoPage urlKey={key.url} productId={key.product_id} />
           </ModalBody>
         </ModalContent>
       </Modal>
