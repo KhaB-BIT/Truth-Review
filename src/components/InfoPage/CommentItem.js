@@ -12,6 +12,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import imgFallBack from "../../assets/fallback100.png";
+import fallback from '../../assets/fallback.png'
 
 function CommentIten({ data }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,9 +46,10 @@ function CommentIten({ data }) {
                   key={index}
                   src={item}
                   boxSize="100px"
+                  cursor="pointer"
                   objectFit="cover"
                   borderRadius="5px"
-                  cursor="pointer"
+                  fallbackSrc={fallback}
                   _hover={{ opacity: 0.8 }}
                   onClick={() => handleOpenModal(item)}
                 />

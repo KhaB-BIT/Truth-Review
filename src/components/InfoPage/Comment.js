@@ -7,7 +7,7 @@ import {
 import CommentIten from "./CommentItem";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import emptyBox from "../../image/empty box.png";
+import emptyBox from "../../assets/empty box.png";
 import CommentSkeleton from "./CommentSkeleton";
 
 function Comment({ productId }) {

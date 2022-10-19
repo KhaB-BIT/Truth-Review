@@ -10,13 +10,11 @@ import {
 } from "@chakra-ui/react";
 import { Modal, ModalContent, ModalBody } from "@chakra-ui/react";
 import Product from "./Product";
-import data, { category } from "./data";
+import { category } from "../Data/data";
 import InfoPage from "../InfoPage";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import axios from "axios";
-// import { useEffect, useState } from "react";
 
 function ListProducts() {
   const seeCategoryInSendo = (link) => {
@@ -49,11 +47,13 @@ function ListProducts() {
 
   return (
     <>
-      <Text fontSize="3xl" my={4}>
+      <Text fontSize="2xl" my={4}>
         Sản phẩm nổi bật
       </Text>
 
       <Flex>
+
+        {/* show list products */}
         <Grid templateColumns="repeat(3, 1fr)" gap={8} w="950px">
           {products?.map((item, index) => {
             return (
@@ -68,13 +68,14 @@ function ListProducts() {
           })}
         </Grid>
 
+          {/* category products  */}
         <Box ml={8} flex={1}>
-          <Text>Trending topics</Text>
+          <Text fontSize='xl'>Bộ sưu tập</Text>
           {category.data.collections.map((item) => {
             return (
               <Flex
-                key={item.id}
                 my={4}
+                key={item.id}
                 onClick={() => seeCategoryInSendo(item.listing_link)}
                 cursor="pointer"
               >
@@ -95,6 +96,7 @@ function ListProducts() {
         </Box>
       </Flex>
 
+          {/* modal detail info product */}
       <Modal isOpen={isOpen} onClose={onClose} size="full">
         <ModalContent bgColor="#f0f2f5">
           <Flex

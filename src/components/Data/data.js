@@ -1,6 +1,3 @@
-// https://api.sendo.vn/onsite-services/shop/collection/external?merchant_external_id=717078&platform=1&limit=20&page=1
-// https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=1&platform=1&seller_admin_id=717078&sortType=vasup_desc
-
 export const category = {
   status: 1,
   message: "Successful",

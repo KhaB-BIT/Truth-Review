@@ -10,10 +10,11 @@ function Homepage() {
     <Box>
       <Header />
       <Container maxW="container.xl">
-        <Notifi/>
+        <Notifi />
         <ListProducts />
       </Container>
-      <Footer/>
+      <Footer />
+      {/* BUTTON SCROLL TO TOP */}
       <ScrollToTop smooth color="#2448c0" />
     </Box>
   );

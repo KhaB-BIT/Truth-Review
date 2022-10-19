@@ -1,16 +1,17 @@
 import {
   Alert,
-  AlertDescription,
   Box,
+  Flex,
   CloseButton,
   useDisclosure,
+  AlertDescription,
 } from "@chakra-ui/react";
 
 function Notifi() {
   const { isOpen: isVisible, onClose } = useDisclosure({ defaultIsOpen: true });
 
   return isVisible ? (
-    <Box display="flex" justifyContent="flex-end">
+    <Flex justifyContent="flex-end">
       <Alert status="info" w="fit-content" mt={3} borderRadius='5px'>
         <Box>
           <AlertDescription pr={6}>Ở đây, chúng tôi review mọi thứ bạn cần</AlertDescription>
@@ -22,7 +23,7 @@ function Notifi() {
           onClick={onClose}
         />
       </Alert>
-    </Box>
+    </Flex>
   ) : (
     ""
   );
