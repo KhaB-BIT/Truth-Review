@@ -41,7 +41,7 @@ function InfoPage({ urlKey, productId }) {
 
       <Flex mt={5} flexDirection={{ base: "column", lg: "row" }}>
         <ImageProduct product={product} />
-        <Comment productId={productId} />
+        <Comment productId={productId} ratingInfo={product?.data.rating_info} />
       </Flex>
     </Container>
   );
