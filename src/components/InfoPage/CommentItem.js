@@ -12,7 +12,6 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import imgFallBack from "../../assets/fallback100.png";
 import fallback from '../../assets/fallback.png'
 
 function CommentIten({ data }) {

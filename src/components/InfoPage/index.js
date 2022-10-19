@@ -1,7 +1,4 @@
-import {
-  Flex,
-  Container,
-} from "@chakra-ui/react";
+import { Flex, Container } from "@chakra-ui/react";
 
 import axios from "axios";
 import "../../styles/InfoPage.scss";
@@ -31,18 +28,19 @@ function InfoPage({ urlKey, productId }) {
   }, []);
 
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.xl" p={0}>
       <Flex
         bg="white"
         borderRadius="20px"
         boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;"
+        flexDirection={{ base: "column", lg: "row" }}
       >
         <ImageSlice images={product?.data.media} />
-        <InfoProduct product={product}/>
+        <InfoProduct product={product} />
       </Flex>
 
-      <Flex mt={5}>
-        <ImageProduct product={product}/>
+      <Flex mt={5} flexDirection={{ base: "column", lg: "row" }}>
+        <ImageProduct product={product} />
         <Comment productId={productId} />
       </Flex>
     </Container>

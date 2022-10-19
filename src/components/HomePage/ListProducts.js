@@ -36,14 +36,12 @@ function ListProducts() {
         `https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=1&platform=1&seller_admin_id=717078&sortType=vasup_desc`
       )
       .then((res) => {
-        setProducts(res.data.data.list)
+        setProducts(res.data.data.list);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-
-  
 
   return (
     <>
@@ -52,13 +50,22 @@ function ListProducts() {
       </Text>
 
       <Flex>
-
         {/* show list products */}
-        <Grid templateColumns="repeat(3, 1fr)" gap={8} w="950px">
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+          }}
+          gap={{base: 4, lg: 8}}
+          w="950px"
+        >
           {products?.map((item, index) => {
             return (
               <GridItem
                 w="100%"
+                display="flex"
+                justifyContent="center"
                 key={index}
                 onClick={() => handleOpenModal(item.url_key, item.product_id)}
               >
@@ -68,9 +75,9 @@ function ListProducts() {
           })}
         </Grid>
 
-          {/* category products  */}
-        <Box ml={8} flex={1}>
-          <Text fontSize='xl'>Bộ sưu tập</Text>
+        {/* category products  */}
+        <Box ml={8} flex={1} display={{ base: "none", lg: "block" }}>
+          <Text fontSize="xl">Bộ sưu tập</Text>
           {category.data.collections.map((item) => {
             return (
               <Flex
@@ -96,24 +103,25 @@ function ListProducts() {
         </Box>
       </Flex>
 
-          {/* modal detail info product */}
+      {/* modal detail info product */}
       <Modal isOpen={isOpen} onClose={onClose} size="full">
         <ModalContent bgColor="#f0f2f5">
           <Flex
-            w="50px"
-            h="50px"
-            margin={8}
+            w='50px'
+            h='50px'
+            margin={{base: 4, md: 8}}
             color="white"
             bg="linear-gradient(to right, #2c479e, #1edaeb)"
-            _hover={{ opacity: "0.8", transform: 'scale(1.05)' }}
+            _hover={{ opacity: "0.8", transform: "scale(1.05)" }}
             borderRadius="50%"
             cursor="pointer"
             position="fixed"
+            zIndex='100'
           >
             <Icon
               as={ArrowBackIcon}
               onClick={onClose}
-              fontSize="3xl"
+              fontSize='3xl'
               m="auto"
             />
           </Flex>

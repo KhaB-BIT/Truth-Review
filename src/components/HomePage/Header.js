@@ -19,7 +19,7 @@ function Header() {
     <Box bg="white" boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 20px 0px">
       <Container maxW="container.xl">
         <Flex py={2} bgColor="white">
-          <Image w="200px" src={logo} />
+          <Image w={{base: '150px', md: '200px'}} src={logo} />
           <Spacer />
           <Center>
             <Tooltip
@@ -31,7 +31,7 @@ function Header() {
               <Button
                 rightIcon={<ArrowForwardIcon />}
                 color="white"
-                size="md"
+                size={{base: 'sm', md: 'md'}}
                 onClick={redirectToSendo}
                 bg="linear-gradient(to right, #2c479e, #1edaeb)"
                 _hover={{ bg: 'linear-gradient(to right, #2c479e, #1edaeb)' }}

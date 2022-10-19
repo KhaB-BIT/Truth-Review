@@ -29,7 +29,8 @@ function Comment({ productId }) {
   return (
     <Box
       flex={1}
-      ml={6}
+      ml={{lg: 6}}
+      mt={{base: 6, lg: 0}}
       bg="#fff"
       borderRadius="20px"
       h="fit-content"
@@ -47,7 +48,7 @@ function Comment({ productId }) {
           <Text mb={6}>Chưa có bình luận nào cho sản phẩm này !</Text>
         </Box>
       ) : (
-        <Box maxH="100vh" overflowY="scroll" p={6}>
+        <Box maxH="100vh" overflowY="scroll" p={{base: 3, lg: 6}}>
           {comments?.map((item) => {
             return <CommentIten key={item.rating_id} data={item} />;
           })}

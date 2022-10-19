@@ -1,10 +1,11 @@
 import {
   Alert,
-  Box,
   Flex,
   CloseButton,
   useDisclosure,
   AlertDescription,
+  Center,
+  Spacer,
 } from "@chakra-ui/react";
 
 function Notifi() {
@@ -12,16 +13,21 @@ function Notifi() {
 
   return isVisible ? (
     <Flex justifyContent="flex-end">
-      <Alert status="info" w="fit-content" mt={3} borderRadius='5px'>
-        <Box>
-          <AlertDescription pr={6}>Ở đây, chúng tôi review mọi thứ bạn cần</AlertDescription>
-        </Box>
-        <CloseButton
-          position="relative"
-          right='-14px'
-          top='-14px'
-          onClick={onClose}
-        />
+      <Alert
+        status="info"
+        w="fit-content"
+        mt={3}
+        borderRadius="5px"
+      >
+        <Flex>
+          <Center>
+            <AlertDescription pr={6} fontSize={{ base: "sm", md: "md" }}>
+              Ở đây, chúng tôi review mọi thứ bạn cần
+            </AlertDescription>
+            <Spacer/>
+            <CloseButton onClick={onClose} />
+          </Center>
+        </Flex>
       </Alert>
     </Flex>
   ) : (

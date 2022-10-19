@@ -10,10 +10,11 @@ function Product({ value }) {
       bg="white"
       borderRadius="10px"
       cursor="pointer"
+      maxW='300px'
     >
       <Img
         w="100%"
-        h="310px"
+        h={{base: '270px', md: '310px'}}
         objectFit="cover"
         borderRadius="10px"
         src={value.image}

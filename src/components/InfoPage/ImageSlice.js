@@ -7,7 +7,7 @@ import 'swiper/scss/pagination';
 
 function ImageSlice({ images }) {
   return (
-    <Box w="600px" bgColor="white" borderRadius="20px" marginRight="30px">
+    <Box w={{base: '100%', lg: '600px'}} bgColor="white" borderRadius="20px" marginRight="30px">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
@@ -18,7 +18,7 @@ function ImageSlice({ images }) {
         {images?.map((item, index) => {
           return (
             <SwiperSlide key={index}>
-              <Img src={item.image_500x500} m='auto'/>
+              <Img src={item.image_500x500} m='auto' borderRadius="20px"/>
             </SwiperSlide>
           );
         })}
