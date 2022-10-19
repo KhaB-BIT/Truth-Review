@@ -30,10 +30,9 @@ function Header() {
           <Spacer />
           <Center>
             <Tooltip
-              hasArrow
               label="Đi đến sendo.vn"
-              bg="grey.100"
-              color="black"
+              bg="linear-gradient(to right, #2c479e, #1edaeb)"
+              color="white"
             >
               <Button
                 rightIcon={<ArrowForwardIcon />}

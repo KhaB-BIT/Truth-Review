@@ -18,7 +18,7 @@ function Comment({ productId, ratingInfo }) {
   useEffect(() => {
     axios
       .get(
-        `https://ratingapi.sendo.vn/product/${productId}/rating?page=1&limit=20&sort=review_score&v=2&star=all`
+        `https://ratingapi.sendo.vn/product/${productId}/rating?page=1&limit=30&sort=review_score&v=2&star=all`
       )
       .then((res) => {
         setComments(res.data.data);
@@ -26,7 +26,7 @@ function Comment({ productId, ratingInfo }) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [productId]);
 
   return (
     <Box
@@ -55,7 +55,7 @@ function Comment({ productId, ratingInfo }) {
           <Text mb={6}>Chưa có bình luận nào cho sản phẩm này !</Text>
         </Box>
       ) : (
-        <Box maxH="100vh" overflowY="scroll" p={{base: 3, lg: 6}}>
+        <Box maxH={{base: '70vh', md: '80vh'}} overflowY="scroll" p={{base: 3, lg: 6}}>
           {comments?.map((item) => {
             return <CommentIten key={item.rating_id} data={item} />;
           })}

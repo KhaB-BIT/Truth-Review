@@ -37,7 +37,7 @@ function RatingOverView({ ratingInfo }) {
         <Flex alignItems="center">
           <Text fontSize="sm">5⭐</Text>
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
-            <Tooltip label={ratingInfo?.star5 + " lượt"} fontSize="sm">
+            <Tooltip label={ratingInfo?.star5 + " lượt"}   fontSize="sm">
               <Box
                 w={ratingInfo?.percent_star5 * 2}
                 h="12px"
@@ -52,7 +52,7 @@ function RatingOverView({ ratingInfo }) {
         <Flex alignItems="center">
           <Text fontSize="sm">4⭐</Text>
           <Box w='200px' h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
-            <Tooltip label={ratingInfo?.star4 + " lượt"} fontSize="sm">
+            <Tooltip label={ratingInfo?.star4 + " lượt"}   fontSize="sm">
               <Box
                 w={ratingInfo?.percent_star4 * 2}
                 h="12px"
@@ -67,7 +67,7 @@ function RatingOverView({ ratingInfo }) {
         <Flex alignItems="center">
           <Text fontSize="sm">3⭐</Text>
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
-            <Tooltip label={ratingInfo?.star3 + " lượt"} fontSize="sm">
+            <Tooltip label={ratingInfo?.star3 + " lượt"}   fontSize="sm">
               <Box
                 w={ratingInfo?.percent_star3 * 2}
                 h="12px"
@@ -82,7 +82,7 @@ function RatingOverView({ ratingInfo }) {
         <Flex alignItems="center">
           <Text fontSize="sm">2⭐</Text>
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
-            <Tooltip label={ratingInfo?.star2 + " lượt"} fontSize="sm">
+            <Tooltip label={ratingInfo?.star2 + " lượt"}   fontSize="sm">
               <Box
                 w={ratingInfo?.percent_star2 * 2}
                 h="12px"
@@ -97,7 +97,7 @@ function RatingOverView({ ratingInfo }) {
         <Flex alignItems="center">
           <Text fontSize="sm">1⭐</Text>
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
-            <Tooltip label={ratingInfo?.star1 + " lượt"} fontSize="sm">
+            <Tooltip label={ratingInfo?.star1 + " lượt"}   fontSize="sm">
               <Box
                 w={ratingInfo?.percent_star1 * 2}
                 h="12px"

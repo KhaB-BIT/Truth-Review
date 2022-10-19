@@ -16,7 +16,6 @@ function Product({ value }) {
         w="100%"
         h={{base: '270px', md: '310px'}}
         objectFit="cover"
-        borderRadius="10px"
         src={value.image}
       />
 
@@ -24,7 +23,7 @@ function Product({ value }) {
         <Text
           fontSize="md"
           fontWeight="bold"
-          my={3}
+          my={2}
           className="product-item--name"
         >
           {value.name}

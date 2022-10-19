@@ -15,7 +15,7 @@ function Notifi() {
     <Flex justifyContent="flex-end">
       <Alert
         status="info"
-        w="fit-content"
+        w={{base: '100%', md: 'fit-content'}}
         mt={3}
         borderRadius="5px"
       >

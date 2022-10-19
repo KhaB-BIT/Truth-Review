@@ -24,7 +24,7 @@ function CommentIten({ data }) {
 
   return (
     <>
-      <Flex my={6}>
+      <Flex my={{base: 4, md: 6}}>
         <Avatar src={data.avatar} />
         <Box>
           <Flex>
@@ -34,7 +34,7 @@ function CommentIten({ data }) {
             </Box>
           </Flex>
 
-          <Text p={3} fontSize="sm">
+          <Text px={3} py={{base: 1, md: 3}} fontSize="sm">
             {data.comment}
           </Text>
           <Flex overflowX="scroll" pb={1}>

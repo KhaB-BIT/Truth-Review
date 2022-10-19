@@ -107,8 +107,8 @@ function ListProducts() {
       <Modal isOpen={isOpen} onClose={onClose} size="full">
         <ModalContent bgColor="#f0f2f5">
           <Flex
-            w='50px'
-            h='50px'
+            w={{base: '45px', md: '50px'}}
+            h={{base: '45px', md: '50px'}}
             margin={{base: 4, md: 8}}
             color="white"
             bg="linear-gradient(to right, #2c479e, #1edaeb)"

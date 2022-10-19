@@ -25,7 +25,7 @@ function InfoPage({ urlKey, productId }) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [urlKey]);
 
   return (
     <Container maxW="container.xl" p={0}>
