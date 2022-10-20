@@ -8,7 +8,7 @@ import {
 import CommentIten from "./CommentItem";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import emptyBox from "../../assets/empty box.png";
+import emptyBox from "../../assets/emptybox.png";
 import CommentSkeleton from "./CommentSkeleton";
 import RatingOverView from "./Rating";
 
