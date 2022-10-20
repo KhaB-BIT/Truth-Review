@@ -129,18 +129,15 @@ function ListProducts() {
         >
           <Icon as={ArrowLeftIcon} />
         </Button>
-        <Button isActive={page === 1 ? true : false} onClick={() => setPage(1)}>
-          1
-        </Button>
-        <Button isActive={page === 2 ? true : false} onClick={() => setPage(2)}>
-          2
-        </Button>
-        <Button isActive={page === 3 ? true : false} onClick={() => setPage(3)}>
-          3
-        </Button>
-        <Button isActive={page === 4 ? true : false} onClick={() => setPage(4)}>
-          4
-        </Button>
+        {[...Array(totalPage)].map((e, index) => (
+          <Button
+            key={index}
+            isActive={page === index+1 ? true : false}
+            onClick={() => setPage(index+1)}
+          >
+            {index+1}
+          </Button>
+        ))}
         <Button
           onClick={() => setPage(page + 1)}
           disabled={page === totalPage ? true : false}
