@@ -122,6 +122,7 @@ function ListProducts() {
         </Box>
       </Flex>
 
+      {/* pagination comment */}
       <Flex p={6} w="950px" justifyContent="center">
         <Button
           onClick={() => setPage(page - 1)}
@@ -132,10 +133,10 @@ function ListProducts() {
         {[...Array(totalPage)].map((e, index) => (
           <Button
             key={index}
-            isActive={page === index+1 ? true : false}
-            onClick={() => setPage(index+1)}
+            isActive={page === index + 1 ? true : false}
+            onClick={() => setPage(index + 1)}
           >
-            {index+1}
+            {index + 1}
           </Button>
         ))}
         <Button

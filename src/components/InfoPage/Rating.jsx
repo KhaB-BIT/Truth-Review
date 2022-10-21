@@ -39,7 +39,7 @@ function RatingOverView({ ratingInfo }) {
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
             <Tooltip label={ratingInfo?.star5 + " lượt"}   fontSize="sm">
               <Box
-                w={ratingInfo?.percent_star5 * 2}
+                 w={(ratingInfo?.percent_star5 * 2).toString()+'px'}
                 h="12px"
                 bg="#fcd53f"
                 borderRadius="5px"
@@ -54,7 +54,7 @@ function RatingOverView({ ratingInfo }) {
           <Box w='200px' h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
             <Tooltip label={ratingInfo?.star4 + " lượt"}   fontSize="sm">
               <Box
-                w={ratingInfo?.percent_star4 * 2}
+                w={(ratingInfo?.percent_star4 * 2).toString()+'px'}
                 h="12px"
                 bg="#fcd53f"
                 borderRadius="5px"
@@ -69,7 +69,7 @@ function RatingOverView({ ratingInfo }) {
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
             <Tooltip label={ratingInfo?.star3 + " lượt"}   fontSize="sm">
               <Box
-                w={ratingInfo?.percent_star3 * 2}
+                w={(ratingInfo?.percent_star3 * 2).toString()+'px'}
                 h="12px"
                 bg="#fcd53f"
                 borderRadius="5px"
@@ -84,7 +84,7 @@ function RatingOverView({ ratingInfo }) {
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
             <Tooltip label={ratingInfo?.star2 + " lượt"}   fontSize="sm">
               <Box
-                w={ratingInfo?.percent_star2 * 2}
+                 w={(ratingInfo?.percent_star2 * 2).toString()+'px'}
                 h="12px"
                 bg="#fcd53f"
                 borderRadius="5px"
@@ -99,7 +99,7 @@ function RatingOverView({ ratingInfo }) {
           <Box w={200} h="12px" bg="#f1f1f1" borderRadius="5px" m={2}>
             <Tooltip label={ratingInfo?.star1 + " lượt"}   fontSize="sm">
               <Box
-                w={ratingInfo?.percent_star1 * 2}
+                 w={(ratingInfo?.percent_star1 * 2).toString()+'px'}
                 h="12px"
                 bg="#fcd53f"
                 borderRadius="5px"
