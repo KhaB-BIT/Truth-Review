@@ -48,6 +48,14 @@ function ListProducts() {
       });
   }, [page]);
 
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  },[page])
+
   //call api list category
   useEffect(() => {
     axios
