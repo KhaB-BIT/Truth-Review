@@ -28,9 +28,8 @@ function RatingOverView({ ratingInfo }) {
           </chakra.span>
           /5 ⭐⭐⭐⭐⭐
         </Text>
-        <Text textAlign="center" fontSize="sm">
-          Đây là thông tin người mua đánh giá shop bán sản phẩm này có đúng mô
-          tả không
+        <Text textAlign="center" fontSize="md">
+          {ratingInfo?.total_rated} lượt đánh giá
         </Text>
       </GridItem>
       <GridItem w="100%">
