@@ -40,7 +40,7 @@ function ListProducts() {
         `https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=${page}&platform=1&seller_admin_id=717078&sortType=vasup_desc`
       )
       .then((res) => {
-        setTotalPage(Math.floor(res.data.data.total / 30));
+        setTotalPage(Math.ceil(res.data.data.total / 30));
         setProducts(res.data.data.list);
       })
       .catch((err) => {

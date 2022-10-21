@@ -12,6 +12,7 @@ function Product({ value }) {
       borderRadius="10px"
       cursor="pointer"
       maxW='300px'
+      h='fit-content'
     >
       <Image
         w="100%"
