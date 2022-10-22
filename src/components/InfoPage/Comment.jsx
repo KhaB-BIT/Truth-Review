@@ -46,11 +46,7 @@ function Comment({ productId, ratingInfo }) {
       boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;"
     >
       <Text fontSize="xl" pl={6} pt={6}>
-        Đánh giá nhận xét về sản phẩm{" "}
-        <chakra.span fontSize="md" as="cite">
-          {" "}
-          ({ratingInfo?.total_rated} lượt đánh giá)
-        </chakra.span>
+        Đánh giá nhận xét về sản phẩm
       </Text>
       <Divider my={3} />
 
@@ -83,16 +79,22 @@ function Comment({ productId, ratingInfo }) {
             >
               <Icon as={ArrowLeftIcon} />
             </Button>
-            {[...Array(totalPage)].map((e, index) => (
-              <Button
-                key={index}
-                bg="white"
-                isActive={page === index + 1 ? true : false}
-                onClick={() => setPage(index + 1)}
-              >
-                {index + 1}
+            {ratingInfo?.total_rated > 300 ? (
+              <Button bg="white">
+                {page}/{totalPage}
               </Button>
-            ))}
+            ) : (
+              [...Array(totalPage)].map((e, index) => (
+                <Button
+                  key={index}
+                  bg="white"
+                  isActive={page === index + 1 ? true : false}
+                  onClick={() => setPage(index + 1)}
+                >
+                  {index + 1}
+                </Button>
+              ))
+            )}
             <Button
               bg="white"
               onClick={() => setPage(page + 1)}

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 function RatingOverView({ ratingInfo }) {
-  console.log("rating", ratingInfo);
+
   return (
     <Grid
       templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
