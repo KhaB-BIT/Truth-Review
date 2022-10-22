@@ -131,7 +131,7 @@ function ListProducts() {
       </Flex>
 
       {/* pagination comment */}
-      <Flex p={6} w="950px" justifyContent="center">
+      <Flex p={6} w={{base: '100%', lg: '950px'}} justifyContent="center">
         <Button
           onClick={() => setPage(page - 1)}
           disabled={page === 1 ? true : false}
