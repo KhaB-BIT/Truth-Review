@@ -18,7 +18,7 @@ function InfoPage({ urlKey, productId }) {
 
   useEffect(() => {
     axios
-      .get(`/full/${urlKey}?`)
+      .get(`https://detail-api.sendo.vn/full/${urlKey}?`)
       .then((res) => {
         setProduct(res.data);
       })
