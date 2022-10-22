@@ -30,11 +30,7 @@ function CommentIten({ data }) {
           <Flex>
             <Box ml={3}>
               <Text>{data.user_name}</Text>
-              <Text fontSize="sm">{
-                [...Array(data.star)].map((e, index) => {
-                  return '⭐'
-                }) 
-              }</Text>
+              <Text fontSize="sm">⭐⭐⭐⭐⭐</Text>
             </Box>
           </Flex>
 
