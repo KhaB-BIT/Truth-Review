@@ -3,7 +3,6 @@ import {
   Divider,
   Image,
   Text,
-  chakra,
   Flex,
   Button,
   Icon,
@@ -24,7 +23,7 @@ function Comment({ productId, ratingInfo }) {
   useEffect(() => {
     axios
       .get(
-        `https://ratingapi.sendo.vn/product/${productId}/rating?page=${page}&limit=30&sort=review_score&v=2&star=all`
+        `/product/${productId}/rating?page=${page}&limit=30&sort=review_score&v=2&star=all`
       )
       .then((res) => {
         setTotalPage(res.data.meta_data.total_page);
