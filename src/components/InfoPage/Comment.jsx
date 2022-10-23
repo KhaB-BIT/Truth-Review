@@ -12,14 +12,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import emptyBox from "../../assets/emptybox.png";
 import CommentSkeleton from "./CommentSkeleton";
-import RatingOverView from "./Rating";
+import RatingOverView from "./RatingOverView";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 function Comment({ productId, ratingInfo }) {
   const [comments, setComments] = useState();
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
-  console.log("render");
+
+  //call api get all comment about product
   useEffect(() => {
     axios
       .get(

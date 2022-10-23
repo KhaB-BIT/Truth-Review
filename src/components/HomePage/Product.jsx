@@ -7,26 +7,16 @@ import fallBack from '../../assets/fallback.png';
 function Product({ value }) {
   return (
     <Box
-      className="product-item"
-      bg="white"
-      borderRadius="10px"
-      cursor="pointer"
-      maxW='300px'
-      h='fit-content'
+      className="product-item" bg="white" borderRadius="10px" 
+      cursor="pointer" maxW='300px' h='fit-content'
     >
       <Image
-        w="100%"
-        h={{base: '270px', md: '310px'}}
-        objectFit="cover"
-        src={value.image}
-        fallbackSrc={fallBack}
+        w="100%" h={{base: '270px', md: '310px'}}
+        objectFit="cover" src={value.image} fallbackSrc={fallBack}
       />
-
       <Box p={3}>
         <Text
-          fontSize="md"
-          fontWeight="bold"
-          my={2}
+          fontSize="md" fontWeight="bold" my={2}
           className="product-item--name"
         >
           {value.name}

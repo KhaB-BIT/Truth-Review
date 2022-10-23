@@ -15,8 +15,9 @@ import { useState } from "react";
 import fallback from '../../assets/fallback.png'
 
 function CommentIten({ data }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  //state content and handle open modal image in comment
   const [content, setContent] = useState();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const handleOpenModal = (url) => {
     setContent(url);
     onOpen();
@@ -62,6 +63,7 @@ function CommentIten({ data }) {
         </Box>
       </Flex>
 
+      {/* modal see image in comment */}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg="none">

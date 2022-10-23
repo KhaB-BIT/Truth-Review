@@ -17,12 +17,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function ListProducts() {
+  //handle open category link in orther tab
   const seeCategoryInSendo = (link) => {
     window.open(link);
   };
+
+  //set up and handle open modal info detail
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [key, setKey] = useState({ url: "", product_id: "" });
-
   const handleOpenModal = (url, product_id) => {
     setKey({ url, product_id });
     onOpen();
@@ -33,7 +35,7 @@ function ListProducts() {
   const [category, setCategory] = useState([]);
   const [totalPage, setTotalPage] = useState(1);
 
-  //call api list products
+  //call api and set list products
   useEffect(() => {
     axios
       .get(
@@ -48,15 +50,16 @@ function ListProducts() {
       });
   }, [page]);
 
-  useEffect(()=>{
+  //effect scroll top when change page
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth'
-    })
-  },[page])
+      behavior: "smooth",
+    });
+  }, [page]);
 
-  //call api list category
+  //call api and set list category
   useEffect(() => {
     axios
       .get(
@@ -130,8 +133,8 @@ function ListProducts() {
         </Box>
       </Flex>
 
-      {/* pagination comment */}
-      <Flex p={6} w={{base: '100%', lg: '950px'}} justifyContent="center">
+      {/* pagination */}
+      <Flex p={6} w={{ base: "100%", lg: "950px" }} justifyContent="center">
         <Button
           onClick={() => setPage(page - 1)}
           disabled={page === 1 ? true : false}
@@ -154,6 +157,7 @@ function ListProducts() {
           <Icon as={ArrowRightIcon} />
         </Button>
       </Flex>
+
       {/* modal detail info product */}
       <Modal isOpen={isOpen} onClose={onClose} size="full">
         <ModalContent bgColor="#f0f2f5">
