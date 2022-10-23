@@ -3,7 +3,6 @@ import {
   Divider,
   Image,
   Text,
-  chakra,
   Flex,
   Button,
   Icon,
