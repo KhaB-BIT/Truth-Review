@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "*",
+      "source": "https://api.sendo.vn/onsite-services/shop/collection/external?merchant_external_id=717078",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },
