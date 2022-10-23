@@ -37,7 +37,7 @@ function ListProducts() {
   useEffect(() => {
     axios
       .get(
-        `https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=${page}&platform=1&seller_admin_id=717078&sortType=vasup_desc`
+        `https://cors-anywhere.herokuapp.com/https://shop-home.sendo.vn/api/v1/product/filter?limit=30&page=${page}&platform=1&seller_admin_id=717078&sortType=vasup_desc`
       )
       .then((res) => {
         setTotalPage(Math.ceil(res.data.data.total / 30));
@@ -60,7 +60,7 @@ function ListProducts() {
   useEffect(() => {
     axios
       .get(
-        "https://api.sendo.vn/onsite-services/shop/collection/external?merchant_external_id=717078"
+        "https://cors-anywhere.herokuapp.com/https://api.sendo.vn/onsite-services/shop/collection/external?merchant_external_id=717078"
       )
       .then((res) => {
         setCategory(res.data.data.collections);

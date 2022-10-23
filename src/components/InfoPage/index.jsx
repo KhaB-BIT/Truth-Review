@@ -18,7 +18,7 @@ function InfoPage({ urlKey, productId }) {
 
   useEffect(() => {
     axios
-      .get(`https://detail-api.sendo.vn/full/${urlKey}?`)
+      .get(`https://cors-anywhere.herokuapp.com/https://detail-api.sendo.vn/full/${urlKey}?`)
       .then((res) => {
         setProduct(res.data);
       })
