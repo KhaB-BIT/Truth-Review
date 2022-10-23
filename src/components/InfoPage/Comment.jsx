@@ -24,7 +24,7 @@ function Comment({ productId, ratingInfo }) {
   useEffect(() => {
     axios
       .get(
-        `https://ratingapi.sendo.vn/product/${productId}/rating?page=${page}&limit=30&sort=review_score&v=2&star=all`
+        `https://cors-anywhere.herokuapp.com/https://ratingapi.sendo.vn/product/${productId}/rating?page=${page}&limit=30&sort=review_score&v=2&star=all`
       )
       .then((res) => {
         setTotalPage(res.data.meta_data.total_page);
@@ -81,7 +81,7 @@ function Comment({ productId, ratingInfo }) {
             </Button>
             {ratingInfo?.total_rated > 300 ? (
               <Button bg="white">
-                {page}/{totalPage}
+                Trang {page}/{totalPage}
               </Button>
             ) : (
               [...Array(totalPage)].map((e, index) => (
