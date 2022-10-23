@@ -80,7 +80,7 @@ function Comment({ productId, ratingInfo }) {
             </Button>
             {ratingInfo?.total_rated > 300 ? (
               <Button bg="white">
-                {page}/{totalPage}
+                Trang {page}/{totalPage}
               </Button>
             ) : (
               [...Array(totalPage)].map((e, index) => (
