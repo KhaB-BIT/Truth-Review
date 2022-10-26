@@ -1,23 +1,19 @@
-import { Flex, Container } from "@chakra-ui/react";
-
 import axios from "axios";
-import "../../styles/InfoPage.scss";
-import { useEffect, useState } from "react";
-
 import Comment from "./Comment";
+import "../../styles/InfoPage.scss";
 import ImageSlice from "./ImageSlice";
 import InfoProduct from "./InfoProduct";
 import ImageProduct from "./ImageProduct";
+import { useEffect, useState } from "react";
+import { Flex, Container } from "@chakra-ui/react";
 
 function InfoPage({ urlKey, productId }) {
   const [product, setProduct] = useState();
-
   //handle new key from prop urlKey
   urlKey = urlKey.substring(
     "https://www.sendo.vn/".length,
     urlKey.indexOf(".html")
   );
-
   //call api get full info product
   useEffect(() => {
     axios
@@ -40,7 +36,6 @@ function InfoPage({ urlKey, productId }) {
       >
         {/* slice image */}
         <ImageSlice images={product?.data.media} />
-
         {/* overview info */}
         <InfoProduct product={product} />
       </Flex>
@@ -48,7 +43,6 @@ function InfoPage({ urlKey, productId }) {
       <Flex mt={5} flexDirection={{ base: "column", lg: "row" }}>
         {/* see info product by image */}
         <ImageProduct product={product} />
-
         {/* rating and all comment */}
         <Comment productId={productId} ratingInfo={product?.data.rating_info} />
       </Flex>

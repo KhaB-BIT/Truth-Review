@@ -53,7 +53,6 @@ function Comment({ productId, ratingInfo }) {
       <RatingOverView ratingInfo={ratingInfo} />
 
       <Divider my={3} />
-
       {comments == null ? (
         <CommentSkeleton />
       ) : comments.length === 0 ? (

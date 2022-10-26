@@ -15,16 +15,16 @@ function Notifi() {
     <Flex justifyContent="flex-end">
       <Alert
         status="info"
-        w={{base: '100%', md: 'fit-content'}}
         mt={3}
         borderRadius="5px"
+        w={{ base: "100%", md: "fit-content" }}
       >
         <Flex>
           <Center>
             <AlertDescription pr={6} fontSize={{ base: "sm", md: "md" }}>
               Ở đây, chúng tôi review mọi thứ bạn cần
             </AlertDescription>
-            <Spacer/>
+            <Spacer />
             <CloseButton onClick={onClose} />
           </Center>
         </Flex>

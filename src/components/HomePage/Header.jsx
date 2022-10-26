@@ -29,24 +29,24 @@ function Header() {
         <Flex py={2} bgColor="white">
           <Image
             w={{ base: "150px", md: "200px" }}
+            cursor="pointer"
             src={logo}
             onClick={reloadPage}
-            cursor="pointer"
           />
           <Spacer />
           <Center>
             <Tooltip
               label="Đi đến sendo.vn"
-              bg="linear-gradient(to right, #2c479e, #1edaeb)"
               color="white"
+              bg="linear-gradient(to right, #2c479e, #1edaeb)"
             >
               <Button
-                rightIcon={<ArrowForwardIcon />}
                 color="white"
                 size={{ base: "sm", md: "md" }}
-                onClick={redirectToSendo}
                 bg="linear-gradient(to right, #2c479e, #1edaeb)"
                 _hover={{ bg: "linear-gradient(to right, #2c479e, #1edaeb)" }}
+                rightIcon={<ArrowForwardIcon />}
+                onClick={redirectToSendo}
               >
                 sendo.vn
               </Button>

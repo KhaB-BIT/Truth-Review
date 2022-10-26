@@ -28,7 +28,7 @@ function InfoProduct({ product }) {
           %
         </chakra.span>
       </Text>
-      <Flex justifyContent='space-around' my={4}>
+      <Flex justifyContent="space-around" my={4}>
         <Text fontSize="sm">
           ⭐⭐⭐⭐⭐ {product?.data.rating_info.total_rated} đánh giá
         </Text>
@@ -37,6 +37,7 @@ function InfoProduct({ product }) {
       <Divider my={1} />
 
       <Text fontSize="md" mb={2} mt={1}>
+        {" "}
         Màu sắc
       </Text>
       {product?.data.attribute && (
@@ -45,11 +46,11 @@ function InfoProduct({ product }) {
             return (
               <Image
                 key={index}
+                mr={2}
                 boxSize="100px"
                 borderRadius="5px"
-                src={item.image_500x500}
-                mr={2}
                 boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;"
+                src={item.image_500x500}
               />
             );
           })}

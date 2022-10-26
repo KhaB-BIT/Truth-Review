@@ -12,7 +12,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import fallback from '../../assets/fallback.png'
+import fallback from "../../assets/fallback.png";
 
 function CommentIten({ data }) {
   //state content and handle open modal image in comment
@@ -25,21 +25,21 @@ function CommentIten({ data }) {
 
   return (
     <>
-      <Flex my={{base: 4, md: 6}}>
+      <Flex my={{ base: 4, md: 6 }}>
         <Avatar src={data.avatar} />
         <Box>
           <Flex>
             <Box ml={3}>
               <Text>{data.user_name}</Text>
-              <Text fontSize="sm">{
-                [...Array(data.star)].map((e, index) => {
-                  return '⭐'
-                }) 
-              }</Text>
+              <Text fontSize="sm">
+                {[...Array(data.star)].map((e, index) => {
+                  return "⭐";
+                })}
+              </Text>
             </Box>
           </Flex>
 
-          <Text px={3} py={{base: 1, md: 3}} fontSize="sm">
+          <Text px={3} py={{ base: 1, md: 3 }} fontSize="sm">
             {data.comment}
           </Text>
           <Flex overflowX="scroll" pb={1}>

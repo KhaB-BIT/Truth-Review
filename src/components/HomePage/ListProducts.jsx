@@ -22,14 +22,14 @@ function ListProducts() {
     window.open(link);
   };
 
-  //set up and handle open modal info detail
+  //set up and handle open/close modal info detail
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [key, setKey] = useState({ url: "", product_id: "" });
   const handleOpenModal = (url, product_id) => {
     setKey({ url, product_id });
     onOpen();
   };
 
+  const [key, setKey] = useState({ url: "", product_id: "" });
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState([]);
@@ -76,6 +76,7 @@ function ListProducts() {
   return (
     <>
       <Text fontSize="2xl" my={4}>
+        {" "}
         Sản phẩm nổi bật
       </Text>
 
@@ -90,6 +91,7 @@ function ListProducts() {
           gap={{ base: 4, lg: 8 }}
           w="950px"
         >
+          {/* render list products */}
           {products?.map((item, index) => {
             return (
               <GridItem
@@ -108,13 +110,14 @@ function ListProducts() {
         {/* category products  */}
         <Box ml={8} flex={1} display={{ base: "none", lg: "block" }}>
           <Text fontSize="xl">Bộ sưu tập</Text>
+          {/* render list category */}
           {category.map((item) => {
             return (
               <Flex
                 my={4}
-                key={item.id}
-                onClick={() => seeCategoryInSendo(item.listing_link)}
                 cursor="pointer"
+                onClick={() => seeCategoryInSendo(item.listing_link)}
+                key={item.id}
               >
                 <Img
                   w="100px"
@@ -174,10 +177,10 @@ function ListProducts() {
             zIndex="100"
           >
             <Icon
-              as={ArrowBackIcon}
-              onClick={onClose}
               fontSize="3xl"
               m="auto"
+              as={ArrowBackIcon}
+              onClick={onClose}
             />
           </Flex>
           <ModalBody>
