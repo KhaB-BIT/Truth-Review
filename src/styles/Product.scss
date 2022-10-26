@@ -7,15 +7,7 @@
     transform: scale(1);
   }
 
-  &:hover {
-    img {
-      transform: scale(1.1);
-    }
-  }
-
-  
-
-  &--name {
+  .product-item--name {
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 30px;
@@ -23,5 +15,22 @@
     height: 60px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+
+    background: linear-gradient(to right, #1edaeb 0%, #2448c0 100%);
+    background-size: 0px 6%;
+    background-repeat: no-repeat;
+    background-position: left 100%;
+    transition-duration: 0.5s;
+  }
+
+  &:hover {
+
+    img {
+      transform: scale(1.1);
+    }
+
+    .product-item--name {
+      background-size: 100% 6%;
+    }
   }
 }
