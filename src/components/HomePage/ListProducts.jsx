@@ -15,6 +15,8 @@ import InfoPage from "../InfoPage";
 import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SkeletonListProducts from "./SkeletonListProducts";
+import SkeletonCategory from "./SkeletonCategory";
 
 function ListProducts() {
   //handle open category link in orther tab
@@ -82,57 +84,68 @@ function ListProducts() {
 
       <Flex>
         {/* show list products */}
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            md: "repeat(2, 1fr)",
-            lg: "repeat(3, 1fr)",
-          }}
-          gap={{ base: 4, lg: 8 }}
-          w="950px"
-        >
-          {/* render list products */}
-          {products?.map((item, index) => {
-            return (
-              <GridItem
-                w="100%"
-                display="flex"
-                justifyContent="center"
-                key={index}
-                onClick={() => handleOpenModal(item.url_key, item.product_id)}
-              >
-                <Product value={item} />
-              </GridItem>
-            );
-          })}
-        </Grid>
+        {products.length === 0 ? (
+          // show skeleton when products not ready
+          <SkeletonListProducts />
+        ) : (
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)",
+            }}
+            gap={{ base: 4, lg: 8 }}
+            w="950px"
+          >
+            {/* render list products */}
+            {products?.map((item, index) => {
+              return (
+                <GridItem
+                  w="100%"
+                  display="flex"
+                  justifyContent="center"
+                  key={index}
+                  onClick={() => handleOpenModal(item.url_key, item.product_id)}
+                >
+                  <Product value={item} />
+                </GridItem>
+              );
+            })}
+          </Grid>
+        )}
 
         {/* category products  */}
         <Box ml={8} flex={1} display={{ base: "none", lg: "block" }}>
           <Text fontSize="xl">Bộ sưu tập</Text>
           {/* render list category */}
-          {category.map((item) => {
-            return (
-              <Flex
-                my={4}
-                cursor="pointer"
-                onClick={() => seeCategoryInSendo(item.listing_link)}
-                key={item.id}
-              >
-                <Img
-                  w="100px"
-                  h="60px"
-                  objectFit="cover"
-                  borderRadius="5px"
-                  src={item.image_url}
-                />
-                <Box ml={3} flex={1}>
-                  <Text>{item.name}</Text>
-                  <Text fontSize="xs">{item.product_total} sản phẩm</Text>
-                </Box>
-              </Flex>
-            );
-          })}
+          {category.length === 0 ? (
+            <SkeletonCategory />
+          ) : (
+            <>
+              {category.map((item) => {
+                return (
+                  <Flex
+                    my={4}
+                    cursor="pointer"
+                    onClick={() => seeCategoryInSendo(item.listing_link)}
+                    key={item.id}
+                  >
+                    <Img
+                      w="100px"
+                      h="60px"
+                      objectFit="cover"
+                      borderRadius="5px"
+                      src={item.image_url}
+                    />
+                    <Box ml={3} flex={1}>
+                      <Text>{item.name}</Text>
+                      <Text fontSize="xs">{item.product_total} sản phẩm</Text>
+                    </Box>
+                  </Flex>
+                );
+              })}
+            </>
+          )}
         </Box>
       </Flex>
 

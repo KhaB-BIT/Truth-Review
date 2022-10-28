@@ -1,9 +1,10 @@
 import "swiper/scss";
 import "swiper/scss/pagination";
 import "swiper/scss/navigation";
-import { Box, Img } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import fallback500 from '../../assets/fallback500.jpg'
 
 function ImageSlice({ images }) {
   return (
@@ -23,7 +24,7 @@ function ImageSlice({ images }) {
         {images?.map((item, index) => {
           return (
             <SwiperSlide key={index}>
-              <Img src={item.image_500x500} m="auto" borderRadius="20px" />
+              <Image src={item.image_500x500} m="auto" borderRadius="20px" fallbackSrc={fallback500} />
             </SwiperSlide>
           );
         })}
