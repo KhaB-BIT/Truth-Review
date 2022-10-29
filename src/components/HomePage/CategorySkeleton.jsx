@@ -1,6 +1,6 @@
 import { Skeleton, Stack } from "@chakra-ui/react";
 
-function SkeletonCategory() {
+function CategorySkeleton() {
   return (
     <Stack>
       {[...Array(6)].map((e, index) => (
@@ -10,4 +10,4 @@ function SkeletonCategory() {
   );
 }
 
-export default SkeletonCategory;
+export default CategorySkeleton;

@@ -1,6 +1,6 @@
 import { Grid, GridItem, Skeleton } from "@chakra-ui/react";
 
-function SkeletonListProducts() {
+function ListProductsSkeleton() {
   return (
     <Grid
       templateColumns={{
@@ -20,4 +20,4 @@ function SkeletonListProducts() {
   );
 }
 
-export default SkeletonListProducts;
+export default ListProductsSkeleton;

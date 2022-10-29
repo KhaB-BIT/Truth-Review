@@ -13,7 +13,7 @@ function InfoPage({ urlKey, productId }) {
     "https://www.sendo.vn/".length,
     urlKey.indexOf(".html")
   );
-  //call api get full info product
+  //call api get full info product                                          
   useEffect(() => {
     axios
       .get(`/full/${urlKey}?`)

@@ -15,8 +15,8 @@ import InfoPage from "../InfoPage";
 import { ArrowBackIcon, ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SkeletonListProducts from "./SkeletonListProducts";
-import SkeletonCategory from "./SkeletonCategory";
+import CategorySkeleton from "./CategorySkeleton";
+import ListProductsSkeleton from "./ListProductsSkeleton";
 
 function ListProducts() {
   //handle open category link in orther tab
@@ -86,7 +86,7 @@ function ListProducts() {
         {/* show list products */}
         {products.length === 0 ? (
           // show skeleton when products not ready
-          <SkeletonListProducts />
+          <ListProductsSkeleton />
         ) : (
           <Grid
             templateColumns={{
@@ -119,7 +119,7 @@ function ListProducts() {
           <Text fontSize="xl">Bộ sưu tập</Text>
           {/* render list category */}
           {category.length === 0 ? (
-            <SkeletonCategory />
+            <CategorySkeleton />
           ) : (
             <>
               {category.map((item) => {
