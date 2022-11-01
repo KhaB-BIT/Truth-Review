@@ -105,7 +105,7 @@ function ListProducts() {
         colorScheme="blue"
         my={3}
       >
-        <TabList>
+        <TabList flexWrap='wrap' justifyContent={{base: 'center', lg: 'unset'}}>
           <Tab>Tất cả</Tab>
           <Tab>Bán chạy</Tab>
           <Tab>Mới nhất</Tab>
