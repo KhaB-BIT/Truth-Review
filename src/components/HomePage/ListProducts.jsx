@@ -6,6 +6,9 @@ import {
   GridItem,
   Icon,
   Img,
+  Tab,
+  TabList,
+  Tabs,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -36,13 +39,32 @@ function ListProducts() {
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState([]);
   const [totalPage, setTotalPage] = useState(1);
+  const [tabIndex, setTabIndex] = useState(0);
 
-  //call api and set list products
+  //set empty for products when 'page' change
+  useEffect(()=>{
+    setProducts([])
+  }, [page])
+
+  //set first page and empty forproducts when 'tabIndex' change
   useEffect(() => {
+    setPage(1)
+    setProducts([])
+  }, [tabIndex])
+
+  
+  //call api and set list products whenever 'page' or 'tabIndex' change
+  useEffect(() => {
+    let endpoint = `/product/filter?limit=30&page=${page}&platform=1&seller_admin_id=717078&`;
+    switch (tabIndex) {
+      case 1: endpoint += `sortType=norder_30_desc`; break;
+      case 2: endpoint += `sortType=product_desc`; break;
+      case 3: endpoint += `sortType=price_asc`; break;
+      case 4: endpoint += `sortType=price_desc`; break;
+      default: endpoint += `sortType=vasup_desc`; break;
+    }
     axios
-      .get(
-        `/product/filter?limit=30&page=${page}&platform=1&seller_admin_id=717078&sortType=vasup_desc`
-      )
+      .get(endpoint)
       .then((res) => {
         setTotalPage(Math.ceil(res.data.data.total / 30));
         setProducts(res.data.data.list);
@@ -50,7 +72,7 @@ function ListProducts() {
       .catch((err) => {
         console.log(err);
       });
-  }, [page]);
+  }, [page, tabIndex]);
 
   //effect scroll top when change page
   useEffect(() => {
@@ -77,10 +99,20 @@ function ListProducts() {
 
   return (
     <>
-      <Text fontSize="2xl" my={4}>
-        {" "}
-        Sản phẩm nổi bật
-      </Text>
+      <Tabs
+        onChange={(index) => setTabIndex(index)}
+        variant="soft-rounded"
+        colorScheme="blue"
+        my={3}
+      >
+        <TabList>
+          <Tab>Tất cả</Tab>
+          <Tab>Bán chạy</Tab>
+          <Tab>Mới nhất</Tab>
+          <Tab>Giá tăng dần</Tab>
+          <Tab>Giá giảm dần</Tab>
+        </TabList>
+      </Tabs>
 
       <Flex>
         {/* show list products */}

@@ -31,7 +31,7 @@ function Product({ value }) {
           {value.name}
         </Text>
         <Text fontSize="md" fontWeight="bold">
-          {value.price.toLocaleString("vi-VN", {
+          {value.final_price.toLocaleString("vi-VN", {
             style: "currency",
             currency: "VND",
           })}
